@@ -61,6 +61,7 @@ def check_fingers(landmarks):
     return fingers, is_fist
 
 try:
+    window_name = "Virtual Mouse"
     while True:
         success, img = cap.read()
         if not success:
@@ -169,11 +170,17 @@ try:
                           cv2.FONT_HERSHEY_SIMPLEX,0.8,(0,0,255),2)
 
         cv2.rectangle(img, (frameR,frameR), (wCam-frameR,hCam-frameR), (255,0,0),2)
-        cv2.imshow("Virtual Mouse", img)
-        
+        cv2.imshow(window_name, img)
+
+        # Exit on keyboard shortcut.
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
+        # Exit if the window was closed using the title-bar close button.
+        if cv2.getWindowProperty(window_name, cv2.WND_PROP_VISIBLE) < 1:
+            break
+
 finally:
+    hands.close()
     cap.release()
     cv2.destroyAllWindows()
