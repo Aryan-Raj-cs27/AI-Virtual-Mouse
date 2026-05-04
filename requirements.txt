@@ -1,4 +1,5 @@
-opencv-python
+opencv-python>=4.8.0
 mediapipe==0.10.14
-pyautogui
-numpy
+pyautogui>=0.9.53
+numpy>=1.24.0
+protobuf==4.25.3
