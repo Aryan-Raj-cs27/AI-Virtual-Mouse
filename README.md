@@ -1,40 +1,39 @@
 # AI Virtual Mouse
 
-Control your mouse cursor using hand gestures through a webcam.
+AI Virtual Mouse turns webcam hand tracking into direct cursor control with gesture-based clicks, scrolling, and drag interactions.
 
-This project uses:
-- Python
+## Project Status
+
+- Status: Complete
+- Readiness: Production-ready desktop demo
+- Deployment: Local webcam application; no hosted deployment applies
+
+## Architecture
+
+The app captures camera frames, extracts hand landmarks with MediaPipe, translates landmark geometry into cursor and gesture events, and dispatches those actions to the operating system through PyAutoGUI.
+
+## Tech Stack
+
+- Python 3.10+
 - OpenCV
 - MediaPipe
 - PyAutoGUI
+- Windows desktop runtime
 
 ## Features
+
 - Real-time hand tracking
-- Cursor movement with index finger
-- Left click gesture
-- Right click gesture
-- Scroll mode
-- Drag mode
+- Cursor movement with the index finger
+- Left-click, right-click, scroll, and drag gestures
+- One-click batch runner for ZIP installs
 
 ## Requirements
+
 - Windows 10/11
 - Webcam
-- Python 3.10 (required for the pinned MediaPipe version)
+- Python 3.10 for the pinned dependency set
 
-## Quick Start (ZIP Download Users)
-If you downloaded this project as a ZIP from GitHub:
-
-1. Extract the ZIP.
-2. Open the extracted folder.
-3. Double-click `run_virtual_mouse.bat`.
-4. Wait for first-time setup to complete.
-5. Use gestures in front of your webcam.
-6. Press `Q` in the camera window to exit.
-
-That is all. The BAT file automatically creates `.venv`, installs dependencies, and starts the app.
-
-## Manual Setup (PowerShell)
-From the project root:
+## Local Setup
 
 ```powershell
 py -3.10 -m venv .venv
@@ -44,43 +43,38 @@ pip install -r requirements.txt
 python src/virtual_mouse.py
 ```
 
-## One-Click Run Options
+## One-Click Run
+
 - File Explorer: double-click `run_virtual_mouse.bat`
-- VS Code: Run Task -> `Run Virtual Mouse (One Click)`
+- VS Code: run the `Run Virtual Mouse (One Click)` task
 
 ## Basic Controls
-- Move cursor: raise index finger and move hand
-- Left click: pinch thumb + index finger
-- Right click: pinch thumb + middle finger
-- Scroll: index + middle finger up, move vertically
-- Drag: hold fist briefly to begin drag, release to drop
+
+- Move cursor: raise the index finger and move the hand
+- Left click: pinch thumb and index finger
+- Right click: pinch thumb and middle finger
+- Scroll: raise index and middle fingers, then move vertically
+- Drag: hold a fist briefly to begin drag, then release to drop
 
 ## Troubleshooting
-- `Python 3.10 is not installed`
-	- Install Python 3.10, then rerun `run_virtual_mouse.bat`.
-- Webcam window does not appear
-	- Check camera permission for Python in Windows privacy settings.
-- Cursor feels jittery
-	- Improve lighting and keep your hand within camera frame.
-- MediaPipe or dependency errors
-	- Delete `.venv`, then run `run_virtual_mouse.bat` again.
+
+- Python 3.10 missing: install Python 3.10, then rerun the BAT file
+- Webcam window missing: check camera permissions for Python in Windows privacy settings
+- Cursor jitter: improve lighting and keep the hand centered in frame
+- Dependency errors: delete `.venv`, then rerun the setup flow
 
 ## Project Structure
+
 ```text
 VirtualMouseAI/
-	docs/
-	src/
-		virtual_mouse.py
-	requirements.txt
-	run_virtual_mouse.bat
-	README.md
+  docs/
+  src/
+    virtual_mouse.py
+  requirements.txt
+  run_virtual_mouse.bat
+  README.md
 ```
 
-## Notes for Contributors
-- Do not commit `.venv`.
-- Keep dependencies in `requirements.txt`.
-- Test using:
+## License
 
-```powershell
-python src/virtual_mouse.py
-```
+MIT License - see `LICENSE`.
